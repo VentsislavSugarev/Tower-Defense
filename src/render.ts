@@ -1,3 +1,4 @@
+import { Enemy } from "./entities/enemy.js";
 import { Grid, TILE_SIZE, TileType } from "./grid.js";
 
 export function render(grid: Grid, ctx: CanvasRenderingContext2D): void {
@@ -20,4 +21,11 @@ export function render(grid: Grid, ctx: CanvasRenderingContext2D): void {
       ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
     }
   }
+}
+
+export function renderEnemy(enemy: Enemy, ctx:CanvasRenderingContext2D){
+  ctx.beginPath();
+  ctx.arc(enemy.position.x, enemy.position.y, 12, 0, Math.PI * 2);
+  ctx.fillStyle = "#aa0000";
+  ctx.fill();
 }
