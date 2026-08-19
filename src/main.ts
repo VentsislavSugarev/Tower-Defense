@@ -14,4 +14,4 @@ if (ctx == null) {
 }
 
 const game = new Game(ctx);
-game.start;
+game.start();

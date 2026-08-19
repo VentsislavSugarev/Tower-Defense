@@ -19,12 +19,16 @@ export class Game{
         }
 
         this.enemy = createEnemy();
-        this.enemy.velocity.x = 50;
+        this.enemy.velocity.x = 200;
     }
 
     update(deltaTime: number): void{
           this.enemy.position.x += this.enemy.velocity.x * deltaTime
           this.enemy.position.y += this.enemy.velocity.y * deltaTime
+
+          if(this.enemy.position.x >= this.ctx.canvas.width || this.enemy.position.x <= 0){
+            this.enemy.velocity.x *= -1;
+          }
           console.log(this.enemy.position) 
     }
 
