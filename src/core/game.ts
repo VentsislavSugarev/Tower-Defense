@@ -1,5 +1,5 @@
 import { createEnemy, Enemy } from "../entities/enemy.js";
-import { Grid, TileType } from "../grid.js";
+import { Grid, TILE_SIZE, TileType } from "../grid.js";
 import { render as renderGrid, renderEnemy } from "../render.js";
 
 export class Game{
@@ -12,7 +12,9 @@ export class Game{
     constructor( ctx: CanvasRenderingContext2D){
         this.ctx = ctx;
         this.grid = new Grid({columns: 12, rows: 9});
-
+        this.ctx.canvas.width = this.grid.columns * TILE_SIZE;
+        this.ctx.canvas.height = this.grid.rows * TILE_SIZE;
+        
         const pathRow = 4;
         for (let col = 0; col < this.grid.columns; col++) {
           this.grid.setTile(col, pathRow, TileType.Path);
